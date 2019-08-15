@@ -1,0 +1,13 @@
+## Processor Design ##
+
+This project details improvements to a baseline MIPS processor implemented on a Pynq Z1 board which has a ZYNQ-7000 SoC chip. The performance of the processor was evaluated using metrics obtained after running a benchmark suite on the processor. These metrics include: the area of the design, the energy consumed, the execution time. A compound metric formed by a weighted sum of these metrics was also proposed. This compound metric modelled the design goal - which placed a stronger emphasis on execution time without ignoring the energy consumption and area all together. The baseline had a score of 1 with this metric and lower scores are better.
+
+For making improvements to the processor a design space exploration was performed for the cache to ﬁnd an optimal conﬁguration. Also the multiplier and divider included in the baseline processor were improved. In selecting these targets for improvement, the fact that multiplication and division take more 32 clock cycles provided a strong incentive. This was further reinforced after a proﬁling of the instructions in the benchmarks revealed that multiply and divide were the ﬁrst and third largest contributor to the execution cycles. From the cache design space exploration, the selected conﬁguration: a non-associative 16kb cache running at 40MHz lead to a 47% execution time improvement compared to the default conﬁguration and scored 0.63 on the compound metric. For the multiplier, both a radix-16 multiplier and a Baugh-Wooley multiplier were implemented. Using the selected cache conﬁguration, the radix-16 multiplier improved the execution time by 65% compared to the default and scored 0.46 on the compound metric. The Baugh-Wooley implementation however improved the execution time by 68% and scored 0.43 on the compound metric. For the divider, a radix-4 SRT division scheme was implemented, it improved the execution time by 69% when compared to the default design and scored 0.43 on the compound metric. Hence, the improved processor consists of a non-associative 16kb cache running at 40MHz with a Baugh-Wooley multiplier and a radix-4 SRT divider.
+
+Section 2 explains the metrics used to evaluate the each design. It also states the design goals of this project. 
+Section 3 details an evaluation of the baseline implementation of the processor. 
+In section 4, the benchmarks are proﬁled and target improvements are identiﬁed. 
+Section 5 outlines the cache space exploration. 
+Section 6 details the improvements to the multiplier while Section 7 details improvements to the divider. 
+Other attempted improvements can be found in Section 8. 
+Sections 9 shows the experiments and the results that were run for the diﬀerent designs and ﬁnally Section 10 concludes the report.
